@@ -19,7 +19,11 @@ include_directories(${SDL_LOCATION}/SDL2_image)
 
 add_library(main SHARED ${SDL_LOCATION}/SDL2/src/main/android/SDL_android_main.c ${SOURCE_FILES})
 
-set(RUST_TARGET armv7-linux-androideabi)
+if (${ANDROID_ABI} STREQUAL "x86")
+    set(RUST_TARGET "i686-linux-android")
+else()
+    set(RUST_TARGET "armv7-linux-androideabi")
+endif()
 
 # add imported target
 add_library(librust STATIC IMPORTED)

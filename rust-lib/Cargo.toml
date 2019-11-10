@@ -9,6 +9,11 @@ name = "rust"
 crate-type = ["staticlib"]
 
 [dependencies]
-sdl2 = "0.27"
-log = "0.3"
+lazy_static = "1.4.0"
 android_log = "0.1.3"
+rand = "0.5.5"
+sdl2 = "0.32.2"
+log = "0.3"
+
+[target.'cfg(target_os="android")'.dependencies]
+jni = { version = "0.14.0", default-features = false }
